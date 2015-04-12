@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script type="text/javascript" src="JS/Forms.js">
+
+        </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+<body>
+    
+    <div class="Form-container">
+        <div class="Form-container">
+
+            <div id="number_auto_container">
+                <label for="field1">
+                    Введите номер
+                </label>
+                <input type="text" id="number_auto">
+            </div>
+        
+            <div id="checkButton" class="field f_100 clearfix submit">
+                <input type="button" value="Check" class="graybtn" onclick="checkNumber()">
+            </div>
+
+            <div id="aResult">
+                Результат анализа
+                <input type="text" id="number_result">
+            </div><br />
+
+
+        </div><br />
+
+        <div id="panelButtons" class="bPanel">
+
+            <div id="buttonTire" class="graybtn">Шина</div>
+            <div id="buttonDoors" class="graybtn">Незаперты двери</div>
+            <div id="buttonWindow" class="graybtn">Открыто окно</div>
+            <div id="buttonLights" class="graybtn">Включены фары</div>
+            <div id="buttonClean" class="graybtn">Помой машину!</div>
+            <div id="buttonPark" class="bluebtn">P</div>
+
+        </div>
+
+        Cообщение:<br />
+        <textarea id="textMessage"></textarea>
+        <div id="sendButton" class="graybtn" onclick="sendMessage()">Отправить</div>
+
+    </div>
+    
+    <script language="JavaScript" type="text/javascript">
+            
+        buttonTire.onclick = function () { fx_click_button('tire', icons, buttonTire); }    
+        buttonDoors.onclick = function () { fx_click_button('door', icons, buttonDoors); }
+        buttonWindow.onclick = function () { fx_click_button('window', icons, buttonWindow); }
+        buttonLights.onclick = function () { fx_click_button('lights', icons, buttonLights); }
+        buttonClean.onclick = function () { fx_click_button('clean', icons, buttonClean); }
+        buttonPark.onclick = function () { fx_click_button('park', icons, buttonPark); }
+
+        var icons = [];
+        var cmessage = message();
+        
+           </script>
+</body>
+
+</html>
