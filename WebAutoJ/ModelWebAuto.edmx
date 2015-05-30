@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ModelWebAuto" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Хранилище ModelWebAutoContainer">
+          <EntitySet Name="Car" EntityType="Хранилище ModelWebAuto.Car" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Car_History" EntityType="Хранилище ModelWebAuto.Car_History" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CarOwner" EntityType="Хранилище ModelWebAuto.CarOwner" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CarOwner_History" EntityType="Хранилище ModelWebAuto.CarOwner_History" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Message" EntityType="Хранилище ModelWebAuto.Message" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Message_History" EntityType="Хранилище ModelWebAuto.Message_History" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Userr" EntityType="Хранилище ModelWebAuto.Userr" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Car_CarOwner1" Association="Хранилище ModelWebAuto.FK_Car_CarOwner1">
+            <End Role="CarOwner" EntitySet="CarOwner" />
+            <End Role="Car" EntitySet="Car" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Car_History_Car" Association="Хранилище ModelWebAuto.FK_Car_History_Car">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="Car_History" EntitySet="Car_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarOwner_History_CarOwner" Association="Хранилище ModelWebAuto.FK_CarOwner_History_CarOwner">
+            <End Role="CarOwner" EntitySet="CarOwner" />
+            <End Role="CarOwner_History" EntitySet="CarOwner_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarOwner_Userr" Association="Хранилище ModelWebAuto.FK_CarOwner_Userr">
+            <End Role="Userr" EntitySet="Userr" />
+            <End Role="CarOwner" EntitySet="CarOwner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_History_Message" Association="Хранилище ModelWebAuto.FK_Message_History_Message">
+            <End Role="Message" EntitySet="Message" />
+            <End Role="Message_History" EntitySet="Message_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Userr" Association="Хранилище ModelWebAuto.FK_Message_Userr">
+            <End Role="Userr" EntitySet="Userr" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarID" />
+          </Key>
+          <Property Name="CarID" Type="int" Nullable="false" />
+          <Property Name="RegNumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="Country" Type="nvarchar" MaxLength="30" />
+          <Property Name="CarOwnerId" Type="int" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="30" />
+          <Property Name="Model" Type="nvarchar" MaxLength="20" />
+          <Property Name="Color" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Car_History">
+          <Key>
+            <PropertyRef Name="CarID" />
+            <PropertyRef Name="StartDate" />
+          </Key>
+          <Property Name="CarID" Type="int" Nullable="false" />
+          <Property Name="RegNumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="Country" Type="nvarchar" MaxLength="30" />
+          <Property Name="CarOwnerId" Type="int" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="30" />
+          <Property Name="Model" Type="nvarchar" MaxLength="20" />
+          <Property Name="Color" Type="nvarchar" MaxLength="20" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="FlagEffective" Type="bit" />
+        </EntityType>
+        <EntityType Name="CarOwner">
+          <Key>
+            <PropertyRef Name="CarOwnerID" />
+          </Key>
+          <Property Name="CarOwnerID" Type="int" Nullable="false" />
+          <Property Name="FirstLicenseDate" Type="date" />
+          <Property Name="MaritalStatus" Type="nvarchar" MaxLength="1" />
+          <Property Name="Occupation" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="1" />
+          <Property Name="HairColor" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="CarOwner_History">
+          <Key>
+            <PropertyRef Name="CarOwnerID" />
+            <PropertyRef Name="StartDate" />
+          </Key>
+          <Property Name="CarOwnerID" Type="int" Nullable="false" />
+          <Property Name="FirstLicenseDate" Type="date" />
+          <Property Name="MaritalStatus" Type="nvarchar" MaxLength="1" />
+          <Property Name="Occupation" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="1" />
+          <Property Name="HairColor" Type="nvarchar" MaxLength="20" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="FlagEffective" Type="bit" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="int" Nullable="false" />
+          <Property Name="UserrID" Type="int" />
+          <Property Name="MessageText" Type="nvarchar" MaxLength="50" />
+          <Property Name="MsgPhoto" Type="image" />
+          <Property Name="GPSCoordinates" Type="nvarchar" MaxLength="50" />
+          <Property Name="CarRegNumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="Viewed" Type="bit" />
+          <Property Name="Score" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Message_History">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RecieverId" Type="int" />
+          <Property Name="DateViewed" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Userr">
+          <Key>
+            <PropertyRef Name="UserrID" />
+          </Key>
+          <Property Name="UserrID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Login" Type="nvarchar" MaxLength="30" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" />
+          <Property Name="Avatar" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="sn_ID" Type="int" />
+          <Property Name="RegDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Car_CarOwner1">
+          <End Role="CarOwner" Type="Хранилище ModelWebAuto.CarOwner" Multiplicity="0..1" />
+          <End Role="Car" Type="Хранилище ModelWebAuto.Car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarOwner">
+              <PropertyRef Name="CarOwnerID" />
+            </Principal>
+            <Dependent Role="Car">
+              <PropertyRef Name="CarOwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Car_History_Car">
+          <End Role="Car" Type="Хранилище ModelWebAuto.Car" Multiplicity="1" />
+          <End Role="Car_History" Type="Хранилище ModelWebAuto.Car_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="Car_History">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarOwner_History_CarOwner">
+          <End Role="CarOwner" Type="Хранилище ModelWebAuto.CarOwner" Multiplicity="1" />
+          <End Role="CarOwner_History" Type="Хранилище ModelWebAuto.CarOwner_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarOwner">
+              <PropertyRef Name="CarOwnerID" />
+            </Principal>
+            <Dependent Role="CarOwner_History">
+              <PropertyRef Name="CarOwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarOwner_Userr">
+          <End Role="Userr" Type="Хранилище ModelWebAuto.Userr" Multiplicity="1" />
+          <End Role="CarOwner" Type="Хранилище ModelWebAuto.CarOwner" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Userr">
+              <PropertyRef Name="UserrID" />
+            </Principal>
+            <Dependent Role="CarOwner">
+              <PropertyRef Name="CarOwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_History_Message">
+          <End Role="Message" Type="Хранилище ModelWebAuto.Message" Multiplicity="1" />
+          <End Role="Message_History" Type="Хранилище ModelWebAuto.Message_History" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="MessageID" />
+            </Principal>
+            <Dependent Role="Message_History">
+              <PropertyRef Name="MessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Userr">
+          <End Role="Userr" Type="Хранилище ModelWebAuto.Userr" Multiplicity="0..1" />
+          <End Role="Message" Type="Хранилище ModelWebAuto.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userr">
+              <PropertyRef Name="UserrID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="UserrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModelWebAuto" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Car" EntityType="ModelWebAuto.Car" />
+          <EntitySet Name="Car_History" EntityType="ModelWebAuto.Car_History" />
+          <EntitySet Name="CarOwner" EntityType="ModelWebAuto.CarOwner" />
+          <EntitySet Name="CarOwner_History" EntityType="ModelWebAuto.CarOwner_History" />
+          <EntitySet Name="Message" EntityType="ModelWebAuto.Message" />
+          <EntitySet Name="Message_History" EntityType="ModelWebAuto.Message_History" />
+          <EntitySet Name="Userr" EntityType="ModelWebAuto.Userr" />
+          <AssociationSet Name="FK_Car_CarOwner1" Association="ModelWebAuto.FK_Car_CarOwner1">
+            <End Role="CarOwner" EntitySet="CarOwner" />
+            <End Role="Car" EntitySet="Car" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Car_History_Car" Association="ModelWebAuto.FK_Car_History_Car">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="Car_History" EntitySet="Car_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarOwner_History_CarOwner" Association="ModelWebAuto.FK_CarOwner_History_CarOwner">
+            <End Role="CarOwner" EntitySet="CarOwner" />
+            <End Role="CarOwner_History" EntitySet="CarOwner_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarOwner_Userr" Association="ModelWebAuto.FK_CarOwner_Userr">
+            <End Role="Userr" EntitySet="Userr" />
+            <End Role="CarOwner" EntitySet="CarOwner" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_History_Message" Association="ModelWebAuto.FK_Message_History_Message">
+            <End Role="Message" EntitySet="Message" />
+            <End Role="Message_History" EntitySet="Message_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Userr" Association="ModelWebAuto.FK_Message_Userr">
+            <End Role="Userr" EntitySet="Userr" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarID" />
+          </Key>
+          <Property Name="CarID" Type="Int32" Nullable="false" />
+          <Property Name="RegNumber" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="CarOwnerId" Type="Int32" />
+          <Property Name="Brand" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Model" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Color" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="CarOwner" Relationship="ModelWebAuto.FK_Car_CarOwner1" FromRole="Car" ToRole="CarOwner" />
+          <NavigationProperty Name="Car_History" Relationship="ModelWebAuto.FK_Car_History_Car" FromRole="Car" ToRole="Car_History" />
+        </EntityType>
+        <EntityType Name="Car_History">
+          <Key>
+            <PropertyRef Name="CarID" />
+            <PropertyRef Name="StartDate" />
+          </Key>
+          <Property Name="CarID" Type="Int32" Nullable="false" />
+          <Property Name="RegNumber" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="CarOwnerId" Type="Int32" />
+          <Property Name="Brand" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Model" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Color" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="FlagEffective" Type="Boolean" />
+          <NavigationProperty Name="Car" Relationship="ModelWebAuto.FK_Car_History_Car" FromRole="Car_History" ToRole="Car" />
+        </EntityType>
+        <EntityType Name="CarOwner">
+          <Key>
+            <PropertyRef Name="CarOwnerID" />
+          </Key>
+          <Property Name="CarOwnerID" Type="Int32" Nullable="false" />
+          <Property Name="FirstLicenseDate" Type="DateTime" Precision="0" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="Occupation" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="HairColor" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Car" Relationship="ModelWebAuto.FK_Car_CarOwner1" FromRole="CarOwner" ToRole="Car" />
+          <NavigationProperty Name="CarOwner_History" Relationship="ModelWebAuto.FK_CarOwner_History_CarOwner" FromRole="CarOwner" ToRole="CarOwner_History" />
+          <NavigationProperty Name="Userr" Relationship="ModelWebAuto.FK_CarOwner_Userr" FromRole="CarOwner" ToRole="Userr" />
+        </EntityType>
+        <EntityType Name="CarOwner_History">
+          <Key>
+            <PropertyRef Name="CarOwnerID" />
+            <PropertyRef Name="StartDate" />
+          </Key>
+          <Property Name="CarOwnerID" Type="Int32" Nullable="false" />
+          <Property Name="FirstLicenseDate" Type="DateTime" Precision="0" />
+          <Property Name="MaritalStatus" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="Occupation" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="HairColor" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="FlagEffective" Type="Boolean" />
+          <NavigationProperty Name="CarOwner" Relationship="ModelWebAuto.FK_CarOwner_History_CarOwner" FromRole="CarOwner_History" ToRole="CarOwner" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="Int32" Nullable="false" />
+          <Property Name="UserrID" Type="Int32" />
+          <Property Name="MessageText" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MsgPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="GPSCoordinates" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CarRegNumber" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Viewed" Type="Boolean" />
+          <Property Name="Score" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Message_History" Relationship="ModelWebAuto.FK_Message_History_Message" FromRole="Message" ToRole="Message_History" />
+          <NavigationProperty Name="Userr" Relationship="ModelWebAuto.FK_Message_Userr" FromRole="Message" ToRole="Userr" />
+        </EntityType>
+        <EntityType Name="Message_History">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RecieverId" Type="Int32" />
+          <Property Name="DateViewed" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Message" Relationship="ModelWebAuto.FK_Message_History_Message" FromRole="Message_History" ToRole="Message" />
+        </EntityType>
+        <EntityType Name="Userr">
+          <Key>
+            <PropertyRef Name="UserrID" />
+          </Key>
+          <Property Name="UserrID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Login" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Avatar" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="sn_ID" Type="Int32" />
+          <Property Name="RegDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CarOwner" Relationship="ModelWebAuto.FK_CarOwner_Userr" FromRole="Userr" ToRole="CarOwner" />
+          <NavigationProperty Name="Message" Relationship="ModelWebAuto.FK_Message_Userr" FromRole="Userr" ToRole="Message" />
+        </EntityType>
+        <Association Name="FK_Car_CarOwner1">
+          <End Role="CarOwner" Type="ModelWebAuto.CarOwner" Multiplicity="0..1" />
+          <End Role="Car" Type="ModelWebAuto.Car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarOwner">
+              <PropertyRef Name="CarOwnerID" />
+            </Principal>
+            <Dependent Role="Car">
+              <PropertyRef Name="CarOwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Car_History_Car">
+          <End Role="Car" Type="ModelWebAuto.Car" Multiplicity="1" />
+          <End Role="Car_History" Type="ModelWebAuto.Car_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="Car_History">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarOwner_History_CarOwner">
+          <End Role="CarOwner" Type="ModelWebAuto.CarOwner" Multiplicity="1" />
+          <End Role="CarOwner_History" Type="ModelWebAuto.CarOwner_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarOwner">
+              <PropertyRef Name="CarOwnerID" />
+            </Principal>
+            <Dependent Role="CarOwner_History">
+              <PropertyRef Name="CarOwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarOwner_Userr">
+          <End Role="Userr" Type="ModelWebAuto.Userr" Multiplicity="1" />
+          <End Role="CarOwner" Type="ModelWebAuto.CarOwner" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Userr">
+              <PropertyRef Name="UserrID" />
+            </Principal>
+            <Dependent Role="CarOwner">
+              <PropertyRef Name="CarOwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_History_Message">
+          <End Role="Message" Type="ModelWebAuto.Message" Multiplicity="1" />
+          <End Role="Message_History" Type="ModelWebAuto.Message_History" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="MessageID" />
+            </Principal>
+            <Dependent Role="Message_History">
+              <PropertyRef Name="MessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Userr">
+          <End Role="Userr" Type="ModelWebAuto.Userr" Multiplicity="0..1" />
+          <End Role="Message" Type="ModelWebAuto.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userr">
+              <PropertyRef Name="UserrID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="UserrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelWebAutoContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Car">
+            <EntityTypeMapping TypeName="ModelWebAuto.Car">
+              <MappingFragment StoreEntitySet="Car">
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CarOwnerId" ColumnName="CarOwnerId" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Car_History">
+            <EntityTypeMapping TypeName="ModelWebAuto.Car_History">
+              <MappingFragment StoreEntitySet="Car_History">
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CarOwnerId" ColumnName="CarOwnerId" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="FlagEffective" ColumnName="FlagEffective" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarOwner">
+            <EntityTypeMapping TypeName="ModelWebAuto.CarOwner">
+              <MappingFragment StoreEntitySet="CarOwner">
+                <ScalarProperty Name="CarOwnerID" ColumnName="CarOwnerID" />
+                <ScalarProperty Name="FirstLicenseDate" ColumnName="FirstLicenseDate" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="HairColor" ColumnName="HairColor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarOwner_History">
+            <EntityTypeMapping TypeName="ModelWebAuto.CarOwner_History">
+              <MappingFragment StoreEntitySet="CarOwner_History">
+                <ScalarProperty Name="CarOwnerID" ColumnName="CarOwnerID" />
+                <ScalarProperty Name="FirstLicenseDate" ColumnName="FirstLicenseDate" />
+                <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="HairColor" ColumnName="HairColor" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="FlagEffective" ColumnName="FlagEffective" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Message">
+            <EntityTypeMapping TypeName="ModelWebAuto.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+                <ScalarProperty Name="UserrID" ColumnName="UserrID" />
+                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+                <ScalarProperty Name="MsgPhoto" ColumnName="MsgPhoto" />
+                <ScalarProperty Name="GPSCoordinates" ColumnName="GPSCoordinates" />
+                <ScalarProperty Name="CarRegNumber" ColumnName="CarRegNumber" />
+                <ScalarProperty Name="Viewed" ColumnName="Viewed" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Message_History">
+            <EntityTypeMapping TypeName="ModelWebAuto.Message_History">
+              <MappingFragment StoreEntitySet="Message_History">
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+                <ScalarProperty Name="RecieverId" ColumnName="RecieverId" />
+                <ScalarProperty Name="DateViewed" ColumnName="DateViewed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Userr">
+            <EntityTypeMapping TypeName="ModelWebAuto.Userr">
+              <MappingFragment StoreEntitySet="Userr">
+                <ScalarProperty Name="UserrID" ColumnName="UserrID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="sn_ID" ColumnName="sn_ID" />
+                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

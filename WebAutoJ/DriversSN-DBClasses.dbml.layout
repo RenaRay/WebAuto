@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DriversSN-DBClasses">
+  <DataContextMoniker Name="/DriversSN_DBClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="3f7fc2e3-faab-4a1b-9911-a6ebec0f4c29" isExpanded="false" absoluteBounds="4.125, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/DriversSN_DBClassesDataContext/Car" />
+      <nestedChildShapes>
+        <elementListCompartment Id="65c5b086-1aae-494d-a373-57a6608f804c" absoluteBounds="4.1400000000000006, 0.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f701b55e-dcaf-4b37-a64a-bca22eb06d89" absoluteBounds="0.5, 1.125, 2, 2.3478011067708326">
+      <DataClassMoniker Name="/DriversSN_DBClassesDataContext/Userr" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a4f76166-84f0-4855-92b0-da7770629291" absoluteBounds="0.51499999999999968, 1.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5dcd9b85-5114-4396-a9a2-f067e445fad9" isExpanded="false" absoluteBounds="4.125, 1.125, 2, 0.45">
+      <DataClassMoniker Name="/DriversSN_DBClassesDataContext/CarOwner" />
+      <nestedChildShapes>
+        <elementListCompartment Id="33ce3f52-3366-45b9-bd31-766e104a9f5a" absoluteBounds="4.14, 1.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.125 : 1.125); (5.125 : 0.95)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DriversSN_DBClassesDataContext/CarOwner/CarOwner_Car" />
+      <nodes>
+        <classShapeMoniker Id="5dcd9b85-5114-4396-a9a2-f067e445fad9" />
+        <classShapeMoniker Id="3f7fc2e3-faab-4a1b-9911-a6ebec0f4c29" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 1.35); (4.125 : 1.35)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DriversSN_DBClassesDataContext/Userr/Userr_CarOwner" />
+      <nodes>
+        <classShapeMoniker Id="f701b55e-dcaf-4b37-a64a-bca22eb06d89" />
+        <classShapeMoniker Id="5dcd9b85-5114-4396-a9a2-f067e445fad9" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="44b667bc-91ed-4edd-bea9-cb6efdf99202" isExpanded="false" absoluteBounds="4.125, 3.625, 2, 0.45">
+      <DataClassMoniker Name="/DriversSN_DBClassesDataContext/CarOwner_History" />
+      <nestedChildShapes>
+        <elementListCompartment Id="58918249-ca3a-47f5-8c56-301cbb15d22f" absoluteBounds="4.1400000000000006, 4.085, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.125 : 1.575); (5.125 : 3.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DriversSN_DBClassesDataContext/CarOwner/CarOwner_CarOwner_History" />
+      <nodes>
+        <classShapeMoniker Id="5dcd9b85-5114-4396-a9a2-f067e445fad9" />
+        <classShapeMoniker Id="44b667bc-91ed-4edd-bea9-cb6efdf99202" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="8738a8f6-da0f-4891-b8d4-3003099bc64d" isExpanded="false" absoluteBounds="1.625, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/DriversSN_DBClassesDataContext/Car_History" />
+      <nestedChildShapes>
+        <elementListCompartment Id="72cd0384-fd4a-4b53-bd2a-decf94489ac3" absoluteBounds="1.6400000000000001, 0.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.125 : 0.725); (3.625 : 0.725)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DriversSN_DBClassesDataContext/Car/Car_Car_History" />
+      <nodes>
+        <classShapeMoniker Id="3f7fc2e3-faab-4a1b-9911-a6ebec0f4c29" />
+        <classShapeMoniker Id="8738a8f6-da0f-4891-b8d4-3003099bc64d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="6eabdd0e-7669-461b-a4d1-f8284e8c3a80" isExpanded="false" absoluteBounds="1.5, 3.625, 2, 0.45">
+      <DataClassMoniker Name="/DriversSN_DBClassesDataContext/Message" />
+      <nestedChildShapes>
+        <elementListCompartment Id="582e6e1c-d93a-4a17-ba23-b5b6e9de6c30" absoluteBounds="1.5150000000000001, 4.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2 : 3.47280110677083); (2 : 3.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DriversSN_DBClassesDataContext/Userr/Userr_Message" />
+      <nodes>
+        <classShapeMoniker Id="f701b55e-dcaf-4b37-a64a-bca22eb06d89" />
+        <classShapeMoniker Id="6eabdd0e-7669-461b-a4d1-f8284e8c3a80" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="074339ad-ad8b-4aa3-8534-f6067eca67f4" isExpanded="false" absoluteBounds="1.5, 4.375, 2, 0.45">
+      <DataClassMoniker Name="/DriversSN_DBClassesDataContext/Message_History" />
+      <nestedChildShapes>
+        <elementListCompartment Id="58a07266-8f37-4b6e-972d-0e51adbd7e56" absoluteBounds="1.5150000000000001, 4.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 4.075); (2.5 : 4.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DriversSN_DBClassesDataContext/Message/Message_Message_History" />
+      <nodes>
+        <classShapeMoniker Id="6eabdd0e-7669-461b-a4d1-f8284e8c3a80" />
+        <classShapeMoniker Id="074339ad-ad8b-4aa3-8534-f6067eca67f4" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
