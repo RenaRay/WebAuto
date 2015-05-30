@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript" src="Scripts/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="Scripts/Forms.js"></script>
+    <script type="text/javascript" src="Scripts/Table.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+
+    <div class="Form-container">
+
+        <div class="Form-container">
+
+            <div id="number_auto_container">                
+                <input type="text" id="number_auto" placeholder="Номер машины">
+            </div>        
+            <div id="checkButton" >
+                <input type="button" value="Check" class="blueorangebtn" onclick="checkNumber()">
+            </div>
+
+            <div id="aResult">
+                Результат анализа:
+            <input type="text" id="number_result">
+            </div>
+
+        </div><br />
+
+        <div id="panelButtons" class="bPanel">
+
+            <div id="buttonTire" class="blueorangebtn"><img src="Images/tyre01.jpg"></div>
+            <div id="buttonDoors" class="blueorangebtn"><img src="Images/door_open01.jpg"></div>
+            <div id="buttonWindow" class="blueorangebtn">Открыто окно</div>
+            <div id="buttonLights" class="blueorangebtn">Включены фары</div>
+            <div id="buttonClean" class="blueorangebtn"><img src="Images/wash01.jpg"></div>
+            <div id="buttonPark" class="blueorangebtn ">Parking</div>
+
+        </div>
+
+        <br />
+        <textarea id="textMessage" placeholder="Сообщение"></textarea>
+        <div id="sendButton" class="blueorangebtn" onclick="sendMessage()">Отправить</div>
+
+        <div id="testRegButton" class="blueorangebtn" onclick="sendData()"><a href="RegistrationPage.html"></a>Регистрация</div>
+
+    </div>
+
+ 
+    
+    <script language="JavaScript" type="text/javascript">
+                
+    </script>
+
+
+</body>
+
+</html>
