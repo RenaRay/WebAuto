@@ -22,17 +22,35 @@ namespace WebAutoJ
                  string fld, string ms, string job, string birthdate, string gender, string hair,
                  string carid, string regnumber, string country, string brand, string model, string color);*/
 
-        [OperationContract]
+        /*[OperationContract]
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, UriTemplate = "SendMessage")]
-        int SendMessage(Stream JSONdataStream);
+        int SendMessage(Stream JSONdataStream);*/
 
         [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "GetCarsForCarOwner/{carOwnerID}")]
-        List<wsCar> GetCarsForCarOwner(string carOwnerID);
-
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "getCarsForCarOwner/{carOwnerID}")]
+        List<WebCar> GetCarsForCarOwner(string carOwnerID);
         [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "getNewMessages/{regnumber}")]
+        List<WebMessage> GetNewMessages(string regnumber);
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "userEntry/{login}/{pass}")]
+        WebUser UserEntry(string login,string pass);
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "addCar")]
+        void AddCar(Stream jStreamCar);
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, UriTemplate = "addTCar")]
+        void AddTCar(Stream jStream);
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, UriTemplate = "register")]
+        void Register(Stream jStreamUser);
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "deleteUser/{userID}")]
+        void DeleteUser(string userID);
+
+       /* [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "getAllUsers")]
-        List<wsUser> GetAllUsers();
+        List<WebUser> GetAllUsers();*/
 
       /*  [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "getData/{value}")]

@@ -8,33 +8,36 @@ using System.Runtime.Serialization;
 namespace WebAutoJ
 {
     [DataContract]
-    public class wsUser
+    public class WebUser
     {
         [DataMember]
-        public int UserID { get; set; }
-
+        public int WebUserID { get; set; }
         [DataMember]
-        public string Name { get; set; }
-
+        public string WUName { get; set; }
         [DataMember]
-        public string Login { get; set; }
-
-      /*  [DataMember]
-        public string Password { get; set; }
-
+        public string WULogin { get; set; }
         [DataMember]
-        public string Avatar { get; set; }
-
+        public string WUPassword { get; set; }
         [DataMember]
-        public string Email { get; set; }
-
+        public string WUAvatar { get; set; }
         [DataMember]
-        public string sn_ID { get; set; }
-
+        public string WUEmail { get; set; }
         [DataMember]
-        public string RegDate { get; set; }*/
-    
-    
+        public string WUsn_ID { get; set; }
+        [DataMember]
+        public string WURegDate { get; set; }
+        [DataMember]
+        public DateTime? WUFLD { get; set; }
+        [DataMember]
+        public string WUMS { get; set; }
+        [DataMember]
+        public string WUJob { get; set; }
+        [DataMember]
+        public DateTime? WUBirthdate { get; set; }
+        [DataMember]
+        public string WUGender { get; set; }
+        [DataMember]
+        public string WUHairColor { get; set; }
     
     }
 }

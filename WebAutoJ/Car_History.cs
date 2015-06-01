@@ -21,6 +21,15 @@ namespace WebAutoJ
         public string Brand { get; set; }
         public string Model { get; set; }
         public string Color { get; set; }
+        public Nullable<double> Price { get; set; }
+        public string CarBody { get; set; }
+        public Nullable<int> ProdYear { get; set; }
+        public Nullable<double> Run { get; set; }
+        public string Transmission { get; set; }
+        public string Engine { get; set; }
+        public string Drive { get; set; }
+        public Nullable<bool> Conflict { get; set; }
+        public Nullable<bool> OnSale { get; set; }
         public System.DateTime StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }
         public Nullable<bool> FlagEffective { get; set; }

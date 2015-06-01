@@ -15,6 +15,9 @@ namespace WebAutoJ
     public partial class CarOwner_History
     {
         public int CarOwnerID { get; set; }
+        public string Name { get; set; }
+        public string Avatar { get; set; }
+        public string Email { get; set; }
         public Nullable<System.DateTime> FirstLicenseDate { get; set; }
         public string MaritalStatus { get; set; }
         public string Occupation { get; set; }

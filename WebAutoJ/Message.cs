@@ -15,16 +15,16 @@ namespace WebAutoJ
     public partial class Message
     {
         public int MessageID { get; set; }
-        public Nullable<int> UserrID { get; set; }
+        public Nullable<int> UserID { get; set; }
         public string MessageText { get; set; }
         public byte[] MsgPhoto { get; set; }
         public string GPSCoordinates { get; set; }
         public string CarRegNumber { get; set; }
         public Nullable<bool> Viewed { get; set; }
-        public Nullable<int> Score { get; set; }
-        public Nullable<System.DateTime> DateCreated { get; set; }
+        public Nullable<bool> Score { get; set; }
+        public DateTime DateCreated { get; set; }
     
+        public virtual CarOwner CarOwner { get; set; }
         public virtual Message_History Message_History { get; set; }
-        public virtual Userr Userr { get; set; }
     }
 }

@@ -10,25 +10,17 @@
 namespace WebAutoJ
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Userr
+    public partial class SearchMessages_Result
     {
-        public Userr()
-        {
-            this.Message = new HashSet<Message>();
-        }
-    
-        public int UserrID { get; set; }
-        public string Name { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Avatar { get; set; }
-        public string Email { get; set; }
-        public Nullable<int> sn_ID { get; set; }
-        public Nullable<System.DateTime> RegDate { get; set; }
-    
-        public virtual CarOwner CarOwner { get; set; }
-        public virtual ICollection<Message> Message { get; set; }
+        public int MessageID { get; set; }
+        public Nullable<int> UserID { get; set; }
+        public string MessageText { get; set; }
+        public byte[] MsgPhoto { get; set; }
+        public string GPSCoordinates { get; set; }
+        public string CarRegNumber { get; set; }
+        public Nullable<bool> Viewed { get; set; }
+        public Nullable<bool> Score { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
     }
 }

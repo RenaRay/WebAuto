@@ -18,9 +18,17 @@ namespace WebAutoJ
         {
             this.Car = new HashSet<Car>();
             this.CarOwner_History = new HashSet<CarOwner_History>();
+            this.Message = new HashSet<Message>();
         }
     
         public int CarOwnerID { get; set; }
+        public string Name { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string Avatar { get; set; }
+        public string Email { get; set; }
+        public Nullable<int> sn_id { get; set; }
+        public Nullable<System.DateTime> regdate { get; set; }
         public Nullable<System.DateTime> FirstLicenseDate { get; set; }
         public string MaritalStatus { get; set; }
         public string Occupation { get; set; }
@@ -30,6 +38,6 @@ namespace WebAutoJ
     
         public virtual ICollection<Car> Car { get; set; }
         public virtual ICollection<CarOwner_History> CarOwner_History { get; set; }
-        public virtual Userr Userr { get; set; }
+        public virtual ICollection<Message> Message { get; set; }
     }
 }

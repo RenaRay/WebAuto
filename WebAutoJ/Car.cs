@@ -26,6 +26,15 @@ namespace WebAutoJ
         public string Brand { get; set; }
         public string Model { get; set; }
         public string Color { get; set; }
+        public Nullable<double> Price { get; set; }
+        public string CarBody { get; set; }
+        public Nullable<int> ProdYear { get; set; }
+        public Nullable<double> Run { get; set; }
+        public string Transmission { get; set; }
+        public string Engine { get; set; }
+        public string Drive { get; set; }
+        public Nullable<bool> Conflict { get; set; }
+        public Nullable<bool> OnSale { get; set; }
     
         public virtual CarOwner CarOwner { get; set; }
         public virtual ICollection<Car_History> Car_History { get; set; }
